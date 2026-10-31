@@ -1,0 +1,73 @@
+project: escrow-demo
+epoch: 14
+defaults:
+  package: "@planner/core"
+  version: 1.0.0
+  forbidden_ast: ["FLOAT", "DOUBLE PRECISION"]
+items:
+  - id: PLT-4090-ESCROW-TYPES
+    goal: Define the escrow command types shared by api and web
+    touches:
+      - packages/api/src/domain/escrow/types.ts
+    symbols:
+      - name: SettlementCommand
+        file: packages/api/src/domain/escrow/types.ts
+        kind: type
+        signature: |
+          export interface SettlementCommand {
+            readonly idempotencyKey: string;
+            readonly escrowAccountId: string;
+            readonly amountMinorUnits: bigint;
+            readonly expectedVersion: number;
+          }
+    scopes:
+      worker_backend:
+        formal_invariants:
+          engine: fast-check
+          properties:
+            - "INV-01: parseCommand(serialize(c)) deep-equals c"
+  - id: PLT-4092-ESCROW-SETTLEMENT
+    goal: Settle an escrow exactly once and show the result in a drawer
+    depends_on: [PLT-4090-ESCROW-TYPES]
+    touches:
+      - packages/api/src/domain/escrow/settle.pure.ts
+      - packages/db/migrations/20261025_escrow.sql
+      - apps/web/src/features/escrow/SettlementDrawer.tsx
+    symbols:
+      - name: SettlementCommand
+        file: packages/api/src/domain/escrow/types.ts
+        kind: type
+        owner: PLT-4090-ESCROW-TYPES
+        signature: |
+          export interface SettlementCommand {
+            readonly idempotencyKey: string;
+            readonly escrowAccountId: string;
+            readonly amountMinorUnits: bigint;
+            readonly expectedVersion: number;
+          }
+    scopes:
+      worker_db:
+        formal_invariants: ["CHECK (balance_minor >= 0 AND version >= 1)"]
+      worker_backend:
+        formal_invariants:
+          engine: fast-check
+          properties:
+            - "INV-01: settlePure(state, cmd).status == 'COMMITTED' ==> state.balance - cmd.amount == result.newBalance"
+            - "INV-02: settlePure(settlePure(s, c).nextState, c) === settlePure(s, c)"
+      worker_ui:
+        selector: "#settle-drawer"
+      worker_qa_guard:
+        allowed_paths: ["packages/api/tests/property/*.spec.ts"]
+  - id: PLT-4093-ESCROW-NOTIFY
+    goal: Send a notification after settlement
+    touches:
+      - packages/api/src/domain/escrow/settle.pure.ts
+      - packages/api/src/notify/escrow.ts
+    scopes:
+      worker_backend:
+        formal_invariants:
+          engine: fast-check
+          properties: ["INV-01: notify(e) is called at most once per settlement"]
+  - id: PLT-4094-CI-PIPELINE
+    goal: Add CI job
+    touches: [".github/workflows/escrow.yml", "Dockerfile"]

@@ -1,0 +1,6 @@
+{
+  "id": "gf-03-reflexion-loop",
+  "kind": "greenfield",
+  "title": "Edit blocked without hypothesis; allowed with one; 4th attempt writes ESCALATION.md",
+  "gate": "Gate 3: Reflexion"
+}

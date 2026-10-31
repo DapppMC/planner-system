@@ -1,0 +1,6 @@
+{
+  "id": "bf-04-deny-list",
+  "kind": "brownfield",
+  "title": "Deny-list blocks ssh/kubectl/DROP DATABASE/rm -rf / /prod hosts and allows normal dev commands",
+  "gate": "Hermetic twin guard"
+}

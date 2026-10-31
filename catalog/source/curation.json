@@ -1,0 +1,33 @@
+{
+  "schema": "odcat-curation/1",
+  "source": {
+    "repo": "https://github.com/nexu-io/open-design",
+    "commit": "e03d5c23f308c39f4de7c057568df66c29a84385",
+    "license": "Apache-2.0",
+    "files_copied": ["manifest.json", "DESIGN.md", "tokens.css"],
+    "note": "Subset only. Brand-replica systems (named companies and products) are deliberately excluded; only generic archetype systems are bundled. Planner archetype labels below are our own grouping, not Open Design categories."
+  },
+  "archetypes": {
+    "editorial": "Warm paper, serif or oversized type, hairline rules. MODE B: landing pages, portfolios, case studies.",
+    "minimal": "Neutral, quiet, type-led. MODE B or light MODE A: docs, settings, simple tools.",
+    "workspace-light": "Dense but calm light UI. MODE A: dashboards, admin, back-office tables.",
+    "precision-dark": "Dark, technical, high-contrast data. MODE A: monitoring, trading, ops consoles.",
+    "industrial-warm": "Warm off-white with heavy type and one loud accent. MODE B: bold brand or event pages (closest bundled match)."
+  },
+  "systems": {
+    "atelier-zero": {"archetype": "editorial", "use_when": "Studio or agency site that wants a printed, magazine-like feel"},
+    "editorial": {"archetype": "editorial", "use_when": "Long-form content, blog or publication home with serif headings"},
+    "warm-editorial": {"archetype": "editorial", "use_when": "Warm, friendly editorial look for a service business"},
+    "paper": {"archetype": "editorial", "use_when": "Nostalgic paper-and-ink look for notes, journals, reading apps"},
+    "minimal": {"archetype": "minimal", "use_when": "Neutral type-led product page or settings-heavy app"},
+    "mono": {"archetype": "minimal", "use_when": "Developer-facing tool; monospace display type"},
+    "default": {"archetype": "minimal", "use_when": "Safe neutral fallback when no stronger direction exists"},
+    "dashboard": {"archetype": "workspace-light", "use_when": "Light KPI dashboard with cards, charts and tables"},
+    "corporate": {"archetype": "workspace-light", "use_when": "Business app that must look trustworthy and conventional"},
+    "enterprise": {"archetype": "workspace-light", "use_when": "Dense admin and back-office screens, many tables and forms"},
+    "mission-control": {"archetype": "precision-dark", "use_when": "Ops or developer console; dark with status colors"},
+    "trading-terminal": {"archetype": "precision-dark", "use_when": "Dense live numbers, order books, tickers; tabular figures matter"},
+    "hud": {"archetype": "precision-dark", "use_when": "Telemetry or sci-fi HUD with monospace labels"},
+    "brutalism": {"archetype": "industrial-warm", "use_when": "Loud, heavy, high-contrast brand or event page"}
+  }
+}

@@ -1,0 +1,55 @@
+# Example: .planner/tickets/PLT-4092-ESCROW-SETTLEMENT.yaml (spec section 6, with the SCIP symbol corrected to a type descriptor)
+ticket_meta:
+  id: "PLT-4092-ESCROW-SETTLEMENT"
+  epoch: 14
+  goal: "Settle an escrow exactly once and show the result in a drawer"
+  touches:
+    - "packages/api/src/domain/escrow/settle.pure.ts"
+    - "packages/db/migrations/20261025_escrow.sql"
+    - "apps/web/src/features/escrow/SettlementDrawer.tsx"
+
+shared_contracts:
+  scip_symbols:
+    - symbol: "scip-typescript npm @planner/core 1.0.0 domain/escrow/SettlementCommand#"
+      signature: |
+        export interface SettlementCommand {
+          readonly idempotencyKey: string & { readonly __brand: 'UUIDv7' };
+          readonly escrowAccountId: string;
+          readonly amountMinorUnits: bigint;
+          readonly expectedVersion: number;
+        }
+
+worker_scopes:
+  worker_db:
+    worker_id: "AG2"
+    allowed_paths: ["packages/db/migrations/*.sql"]
+    forbidden_ast: ["FLOAT", "DOUBLE PRECISION"]
+    formal_invariants:
+      - "CHECK (balance_minor >= 0 AND version >= 1)"
+
+  worker_backend:
+    worker_id: "AG5"
+    allowed_paths: ["packages/api/src/domain/escrow/settle.pure.ts"]
+    formal_invariants:
+      engine: "fast-check"
+      properties:
+        - "INV-01: settlePure(state, cmd).status == 'COMMITTED' ==> state.balance - cmd.amount == result.newBalance"
+        - "INV-02: settlePure(settlePure(s, c).nextState, c) === settlePure(s, c)"
+
+  worker_ui:
+    worker_id: "AG3"
+    allowed_paths: ["apps/web/src/features/escrow/SettlementDrawer.tsx"]
+    mandatory_fsm: "@zag-js/core"
+    kinematic_spec:
+      spring_damping_zeta: 0.82
+      target_apca_lc: 75.0
+      optical_trim: "@capsizecss/core"
+
+  worker_qa_guard:
+    worker_id: "AG4"
+    role: "ADVERSARIAL_BOUNTY"
+    allowed_paths: ["packages/api/tests/property/*.spec.ts"]
+    forbidden_calls: ["jest.mock", "vi.mock", "sinon.stub"]
+    mutation_gate:
+      min_kill_score: 0.92
+      target_diff_only: true

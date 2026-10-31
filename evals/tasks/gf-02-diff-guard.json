@@ -1,0 +1,6 @@
+{
+  "id": "gf-02-diff-guard",
+  "kind": "greenfield",
+  "title": "Diff guard blocks an edit outside allowed_paths and an untracked leak",
+  "gate": "Gate 3: ticketc diff"
+}

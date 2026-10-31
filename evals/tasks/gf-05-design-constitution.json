@@ -1,0 +1,6 @@
+{
+  "id": "gf-05-design-constitution",
+  "kind": "greenfield",
+  "title": "Constitution <= 1500 tokens, tokens.css radius math, and design_lint catches 5/5 single mutations (indigo, purple class, broken radius, no tabular-nums, transition: all)",
+  "gate": "Gate 2: UI rules"
+}

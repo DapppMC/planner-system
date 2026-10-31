@@ -1,0 +1,252 @@
+{
+  "schema": "cartography/1",
+  "repo_root": "cert-slicer",
+  "engine": "regex",
+  "entrypoints": [
+    {
+      "type": "cli",
+      "handler": "__main__",
+      "path": "build_installer.py",
+      "line": 118
+    },
+    {
+      "type": "cli",
+      "handler": "__main__",
+      "path": "src/certslice/__main__.py",
+      "line": 1
+    },
+    {
+      "type": "cli",
+      "handler": "__main__",
+      "path": "src/certslice/gui.py",
+      "line": 1831
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/status",
+      "handler": "get_status",
+      "path": "src/certslice/web.py",
+      "line": 53
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/settings",
+      "handler": "get_settings",
+      "path": "src/certslice/web.py",
+      "line": 71
+    },
+    {
+      "type": "http_route",
+      "method": "POST",
+      "route": "/api/settings",
+      "handler": "save_settings",
+      "path": "src/certslice/web.py",
+      "line": 84
+    },
+    {
+      "type": "http_route",
+      "method": "POST",
+      "route": "/api/process",
+      "handler": "start_process",
+      "path": "src/certslice/web.py",
+      "line": 145
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/progress/{job_id}",
+      "handler": "get_progress_stream",
+      "path": "src/certslice/web.py",
+      "line": 239
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/jobs/{job_id}/results",
+      "handler": "get_job_results",
+      "path": "src/certslice/web.py",
+      "line": 276
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/jobs/{job_id}/preview/{item_index}",
+      "handler": "get_item_preview",
+      "path": "src/certslice/web.py",
+      "line": 331
+    },
+    {
+      "type": "http_route",
+      "method": "POST",
+      "route": "/api/jobs/{job_id}/approve",
+      "handler": "approve_candidate",
+      "path": "src/certslice/web.py",
+      "line": 363
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/jobs/{job_id}/download/zip",
+      "handler": "download_zip",
+      "path": "src/certslice/web.py",
+      "line": 444
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/api/jobs/{job_id}/download/{filename}",
+      "handler": "download_workbook",
+      "path": "src/certslice/web.py",
+      "line": 475
+    },
+    {
+      "type": "http_route",
+      "method": "POST",
+      "route": "/api/open-folder",
+      "handler": "open_folder",
+      "path": "src/certslice/web.py",
+      "line": 490
+    },
+    {
+      "type": "http_route",
+      "method": "GET",
+      "route": "/",
+      "handler": "index_page",
+      "path": "src/certslice/web.py",
+      "line": 504
+    },
+    {
+      "type": "cli",
+      "handler": "__main__",
+      "path": "src/certslice/web.py",
+      "line": 1491
+    }
+  ],
+  "top_dependencies": [
+    {
+      "symbol": "load_config",
+      "file": "src/certslice/config.py",
+      "pagerank_score": 0.0259,
+      "referenced_by": 4
+    },
+    {
+      "symbol": "fold_text",
+      "file": "src/certslice/config.py",
+      "pagerank_score": 0.0259,
+      "referenced_by": 2
+    },
+    {
+      "symbol": "load_aliases",
+      "file": "src/certslice/config.py",
+      "pagerank_score": 0.0259,
+      "referenced_by": 1
+    },
+    {
+      "symbol": "InputError",
+      "file": "src/certslice/errors.py",
+      "pagerank_score": 0.0239,
+      "referenced_by": 7
+    },
+    {
+      "symbol": "AccountingError",
+      "file": "src/certslice/errors.py",
+      "pagerank_score": 0.0239,
+      "referenced_by": 3
+    },
+    {
+      "symbol": "launch_gui",
+      "file": "src/certslice/gui.py",
+      "pagerank_score": 0.0214,
+      "referenced_by": 2
+    },
+    {
+      "symbol": "ReviewDialog",
+      "file": "src/certslice/gui.py",
+      "pagerank_score": 0.0214,
+      "referenced_by": 1
+    },
+    {
+      "symbol": "fold",
+      "file": "src/certslice/normalize.py",
+      "pagerank_score": 0.0208,
+      "referenced_by": 6
+    },
+    {
+      "symbol": "name_tokens",
+      "file": "src/certslice/normalize.py",
+      "pagerank_score": 0.0208,
+      "referenced_by": 2
+    },
+    {
+      "symbol": "normalize_name",
+      "file": "src/certslice/normalize.py",
+      "pagerank_score": 0.0208,
+      "referenced_by": 2
+    },
+    {
+      "symbol": "Candidate",
+      "file": "src/certslice/models.py",
+      "pagerank_score": 0.015,
+      "referenced_by": 5
+    },
+    {
+      "symbol": "Employee",
+      "file": "src/certslice/models.py",
+      "pagerank_score": 0.015,
+      "referenced_by": 5
+    },
+    {
+      "symbol": "PageText",
+      "file": "src/certslice/models.py",
+      "pagerank_score": 0.015,
+      "referenced_by": 1
+    },
+    {
+      "symbol": "BulkResult",
+      "file": "src/certslice/bulk.py",
+      "pagerank_score": 0.01,
+      "referenced_by": 1
+    },
+    {
+      "symbol": "MultiFolderResult",
+      "file": "src/certslice/bulk.py",
+      "pagerank_score": 0.01,
+      "referenced_by": 1
+    }
+  ],
+  "orphan_files": [],
+  "orphan_notes": {},
+  "db_schema": {
+    "tables": []
+  },
+  "env_contract": [
+    "CHROME_BIN",
+    "MKL_NUM_THREADS",
+    "NUMEXPR_NUM_THREADS",
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "RUN_CHECK_TICKET",
+    "VECLIB_MAXIMUM_THREADS"
+  ],
+  "sql_calls": [],
+  "deprecated_calls": [],
+  "dynamic_dispatch_files": [
+    "docs/spec/repo-root/tests/acceptance/test_pipeline.py",
+    "tests/acceptance/test_pipeline.py"
+  ],
+  "stats": {
+    "files_scanned": 108,
+    "source_files": 108,
+    "repomap_files": 101,
+    "repomap_tokens": 1488,
+    "entrypoint_scan_skipped_files": 81
+  },
+  "limits": [
+    "Structure only: behaviour is not inferred. Verify with golden tests (Gate -1).",
+    "Regex engine is line based; multi-line calls need --engine ast-grep.",
+    "Entry points and top_dependencies ignore these folders (--include-nonprod to scan them): __fixtures__, __mocks__, __tests__, doc, docs, e2e, example, examples, fixtures, sample, samples, scripts, spikes, test, tests.",
+    "top_dependencies skips generic names (get, set, add, save, ...), dunder methods and names under 4 characters."
+  ]
+}

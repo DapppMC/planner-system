@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: brownfield-cert-service-map
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  A CARTOGRAPHY.json listing the real entrypoints, the orphan legacy/old_ocr.ts file, the DB tables and env keys,
+  plus a requirements file where every requirement carries a file:line reference and one of INVARIANT, LEGACY_ANOMALY
+  or DEAD_WEIGHT. The hardcoded user id 42 bypass and the magic 0.15 value are flagged as LEGACY_ANOMALY with a question
+  for the user. The original source is untouched.

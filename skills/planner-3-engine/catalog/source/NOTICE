@@ -1,0 +1,8 @@
+This directory bundles a curated subset of design systems from Open Design
+(https://github.com/nexu-io/open-design, commit e03d5c23f308c39f4de7c057568df66c29a84385),
+licensed under the Apache License, Version 2.0 (see LICENSE in this directory).
+
+Copied files (unmodified): design-systems/<id>/manifest.json, DESIGN.md, tokens.css.
+Not copied: previews, component kits, brand-replica systems and all other repository content.
+curation.json is Planner AI's own addition (archetype labels and use-when notes).
+Open Design is a separate project; no affiliation or endorsement is implied.

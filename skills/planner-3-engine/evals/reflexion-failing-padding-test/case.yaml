@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: reflexion-failing-padding-test
+context:
+  scaffold_script: place-files.sh
+expected_outcome: |
+  Before editing code the agent records a failure signature and a falsifiable hypothesis in reflection_log.md and gets
+  reflect_check.py to exit 0. The real bug (normalize_id handles the 8-digit padding and truncation incorrectly) is fixed
+  in ids.py, the full test suite passes, and tests/test_ids.py is byte-identical to the original.

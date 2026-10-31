@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: design-admin-dashboard-tokens
+expected_outcome: |
+  One HTML file for an operational dashboard that follows the workspace rules: information dense, tokens as CSS
+  variables, tabular numerals for numbers, no backdrop blur on cards, no indigo or purple primary color, no nested
+  cards, no transition: all, no filler marketing copy, and sufficient text contrast. Verified on the rendered page: no indigo/purple hue, nested rounded boxes obey R_outer = R_inner + padding (at least one pair present), every number uses tabular-nums or monospace, only transform and opacity transition.

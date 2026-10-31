@@ -1,0 +1,6 @@
+{
+  "id": "bf-01-repomap-rank",
+  "kind": "brownfield",
+  "title": "Repo-map ranks the most-referenced file first, stays within budget, skips node_modules",
+  "gate": "Gate -2: repomap"
+}

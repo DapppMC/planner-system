@@ -1,0 +1,6 @@
+{
+  "id": "gf-04-design-catalog",
+  "kind": "greenfield",
+  "title": "odcat builds L0/L1 tiers from a fixture; FACETS <= 350 tokens; search is correct",
+  "gate": "Gate 2: design lookup"
+}

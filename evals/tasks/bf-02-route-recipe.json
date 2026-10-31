@@ -1,0 +1,6 @@
+{
+  "id": "bf-02-route-recipe",
+  "kind": "brownfield",
+  "title": "ast-grep recipe finds exactly the HTTP routes in a fixture (SKIP if binary missing)",
+  "gate": "Gate -2: entrypoints"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "bf-03-sandbox-lock",
+  "kind": "brownfield",
+  "title": "sandbox.lock is deterministic, has the contract keys, never stores env values",
+  "gate": "Hermetic twin"
+}

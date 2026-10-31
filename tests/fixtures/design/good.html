@@ -1,0 +1,13 @@
+<!doctype html><html><head><title>Ops</title><style>
+:root{--bg:#0f1115;--surface:#171a21;--fg:#e8eaed;--muted:#a0a6b0;--accent:#2f9e8f;--line:#2a2f3a;
+--pad:12px;--radius-inner:8px;--radius-outer:calc(var(--radius-inner) + var(--pad))}
+body{background:var(--bg);color:var(--fg);font:14px system-ui}
+.panel{background:var(--surface);padding:var(--pad);border-radius:var(--radius-outer)}
+.panel .chip{background:var(--line);border-radius:var(--radius-inner);padding:4px 8px}
+table{font-variant-numeric:tabular-nums}
+header{position:sticky;top:0;backdrop-filter:blur(8px)}
+.bar{transition:transform .2s ease,opacity .2s ease}
+@keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+</style></head><body><header>Sertifikat</header>
+<section class="panel"><span class="chip">Aktif</span>
+<table><tr><td>1204</td><td>38</td><td>9.5%</td></tr></table></section></body></html>

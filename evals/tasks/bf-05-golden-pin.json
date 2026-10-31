@@ -1,0 +1,6 @@
+{
+  "id": "bf-05-golden-pin",
+  "kind": "brownfield",
+  "title": "A frozen golden fixture whose bytes change makes ticket validation fail",
+  "gate": "Gate -1: golden master"
+}

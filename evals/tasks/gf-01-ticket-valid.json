@@ -1,0 +1,6 @@
+{
+  "id": "gf-01-ticket-valid",
+  "kind": "greenfield",
+  "title": "Valid ticket compiles; ticket without acceptance is rejected",
+  "gate": "Gate 3/4: ticketc validate"
+}
